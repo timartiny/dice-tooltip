@@ -167,25 +167,30 @@ function checkItemTooltip(el, actor) {
   
   let tooltipStr = "";
   let createTooltip = false;
-  
-  if (item.hasAttack) {
-    createTooltip = true;
-    tooltipStr += "<p><b>• Attack: </b>" + formatDiceParts(rollFakeAttack(item)) + '</p>';
-  }
 
-  if (item.hasDamage) {
-    createTooltip = true;
-    const itemConfig = {
-      // spellLevel: 1, ** need to find a cool solution for this **
-      versatile: item.isVersatile
-    };
-    var dmgOrHealing = item.isHealing? "Healing" : "Damage";
-    tooltipStr += "<p><b>• " + dmgOrHealing + ": </b>" + formatDiceParts(rollFakeDamage(item, itemConfig)) + " " + item.labels.damageTypes + "</p>";
-  }
+  if (item===null) {
+    createTooltip = true
+    tooltipStr += "<p>This item is not on the prototype actor's sheet, and cannot be referenced currently</p>"
+  } else {
+    if (item.hasAttack) {
+      createTooltip = true;
+      tooltipStr += "<p><b>• Attack: </b>" + formatDiceParts(rollFakeAttack(item)) + '</p>';
+    }
 
-  if (item.hasSave) {
-    createTooltip = true;
-    tooltipStr += "<p><b>• Save: </b>" + item.labels.save + "</p>";
+    if (item.hasDamage) {
+      createTooltip = true;
+      const itemConfig = {
+        // spellLevel: 1, ** need to find a cool solution for this **
+        versatile: item.isVersatile
+      };
+      var dmgOrHealing = item.isHealing? "Healing" : "Damage";
+      tooltipStr += "<p><b>• " + dmgOrHealing + ": </b>" + formatDiceParts(rollFakeDamage(item, itemConfig)) + " " + item.labels.damageTypes + "</p>";
+    }
+
+    if (item.hasSave) {
+      createTooltip = true;
+      tooltipStr += "<p><b>• Save: </b>" + item.labels.save + "</p>";
+    }
   }
 
   if (!createTooltip) return;
