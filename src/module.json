@@ -5,7 +5,7 @@
     "author": "Steffan Poulsen - Majestic#6238",
     "version": "1.0.12",
     "minimumCoreVersion": "0.5.5",
-    "compatibleCoreVersion": "0.6.5",
+    "compatibleCoreVersion": "0.7.9",
     "styles": ["/css/dicetooltip.css"],
     "scripts": ["./dicetooltip.js"],
     "url": "https://github.com/timartiny/dice-tooltip",
