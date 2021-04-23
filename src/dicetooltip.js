@@ -196,7 +196,6 @@ function checkItemTooltip(el, actor) {
         }
         damageType = itemData.damage.parts[i][1];
         tooltipStr += formatDiceParts(rollFakeDamage(item, itemConfig, damageType)) + " " + capitalizeFirstLetter(damageType);
-        console.log(tooltipStr)
       }
       tooltipStr += "</p>";
     }
