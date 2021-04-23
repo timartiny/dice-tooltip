@@ -1,3 +1,11 @@
+# 1.0.12
+
+* Change Dice formatting to only add ' + ' when there are number, or more dice, dropping it for zeros
+
+# 1.0.11
+
+* Avoid null reference if item is not on prototype actor's sheet
+
 # 1.0.10
 
 * Avoid null reference if item is not on prototype actor's sheet
@@ -5,10 +13,6 @@
 # 1.0.9
 
 * Change references to `roll.parts` to use new `roll.terms`
-
-# 1.0.8
-
-* Avoid null reference if item is not on prototype actor's sheet
 
 # 1.0.8
 

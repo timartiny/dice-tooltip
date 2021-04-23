@@ -210,7 +210,8 @@ function removeTooltip() {
 
 function formatBonus(bonus) {
   var evalNum = eval(bonus);
-  var numberPlusMinus = evalNum >= 0? " + " : " - ";
+  if (evalNum == 0) return "";
+  var numberPlusMinus = evalNum > 0? " + " : " - ";
   return numberPlusMinus + Math.abs(evalNum);
 }
 
@@ -233,8 +234,7 @@ function formatDiceParts(rollData) {
   
   try {
     var bonusVal = eval(bonusStr)
-    if (res.length > 0) res += " + ";
-    if (bonusVal != 0) res += bonusVal;
+    if (bonusVal != 0) res += " + " + bonusVal;
   } catch (e) {
     if (res.length > 0) res += " + ";
     res += bonusStr;
