@@ -160,6 +160,10 @@ function checkAbilityTooltip(el, actor) {
   showTooltip(tooltipStr);
 }
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function checkItemTooltip(el, actor) {
   var dataItem = $(el).closest("li").get();
   var data = dataItem[0].dataset;
