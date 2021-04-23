@@ -1,3 +1,7 @@
+# 1.0.14
+
+* Add missing necessary function
+
 # 1.0.13
 
 * Added support for multiple damage types on a weapon.
