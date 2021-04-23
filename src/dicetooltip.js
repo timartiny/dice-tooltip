@@ -246,7 +246,7 @@ function formatDiceParts(rollData) {
   try {
     var bonusVal = eval(bonusStr)
     if (res.length > 0) res += " + ";
-    if (bonusVal != 0) res += bonusVal;
+    if (bonusVal != 0 && bonusVal != undefined) res += bonusVal;
   } catch (e) {
     if (res.length > 0) res += " + ";
     res += bonusStr;
