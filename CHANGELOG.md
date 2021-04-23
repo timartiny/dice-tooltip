@@ -1,3 +1,7 @@
+# 1.0.9
+
+* Change Dice formatting to only add ' + ' when there are number, or more dice, dropping it for zeros
+
 # 1.0.8
 
 * Added support for "Tidy5e Sheet" NPCs (https://github.com/sdenec/tidy5e-sheet)

@@ -205,7 +205,8 @@ function removeTooltip() {
 
 function formatBonus(bonus) {
   var evalNum = eval(bonus);
-  var numberPlusMinus = evalNum >= 0? " + " : " - ";
+  if (evalNum == 0) return "";
+  var numberPlusMinus = evalNum > 0? " + " : " - ";
   return numberPlusMinus + Math.abs(evalNum);
 }
 
@@ -216,7 +217,7 @@ function formatDiceParts(rollData) {
   if (rollData.parts.length > 0) {
     for (var i=0;i<rollData.parts.length;i++) {
       if (typeof rollData.parts[i] == 'object') {
-        if (i > 0) res += " + ";
+        if (res.length > 0) res += " + ";
         res += rollData.parts[i].formula;
       } else {
         bonusStr += rollData.parts[i];
@@ -228,8 +229,7 @@ function formatDiceParts(rollData) {
   
   try {
     var bonusVal = eval(bonusStr)
-    if (res.length > 0) res += " + ";
-    if (bonusVal != 0) res += bonusVal;
+    if (bonusVal != 0) res += " + " + bonusVal;
   } catch (e) {
     if (res.length > 0) res += " + ";
     res += bonusStr;
