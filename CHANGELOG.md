@@ -1,4 +1,4 @@
-# 1.0.8
+# 1.0.9
 
 * Avoid null reference if item is not on prototype actor's sheet
 
