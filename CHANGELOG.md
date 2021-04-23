@@ -1,3 +1,7 @@
+# 1.0.13
+
+* Added support for multiple damage types on a weapon.
+
 # 1.0.12
 
 * Change Dice formatting to only add ' + ' when there are number, or more dice, dropping it for zeros

@@ -176,14 +176,26 @@ function checkItemTooltip(el, actor) {
       createTooltip = true;
       tooltipStr += "<p><b>• Attack: </b>" + formatDiceParts(rollFakeAttack(item)) + '</p>';
     }
-
     if (item.hasDamage) {
       createTooltip = true;
       const itemConfig = {
         // spellLevel: 1, ** need to find a cool solution for this **
         versatile: item.isVersatile
       };
+      // print damage types by type, not all at once
       var dmgOrHealing = item.isHealing? "Healing" : "Damage";
+      tooltipStr += "<p><b>• " + dmgOrHealing + ": </b>";
+      itemData = item.data.data
+      for (var i = 0; i < itemData.damage.parts.length; i++) {
+        if (i > 0) {
+          tooltipStr += "<br>&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;";
+        }
+        damageType = itemData.damage.parts[i][1];
+        tooltipStr += formatDiceParts(rollFakeDamage(item, itemConfig, damageType)) + " " + capitalizeFirstLetter(damageType);
+        console.log(tooltipStr)
+      }
+      tooltipStr += "</p>";
+
       tooltipStr += "<p><b>• " + dmgOrHealing + ": </b>" + formatDiceParts(rollFakeDamage(item, itemConfig)) + " " + item.labels.damageTypes + "</p>";
     }
 
@@ -298,7 +310,7 @@ function rollFakeAttack(item) {
 
   /* -------------------------------------------- */
 
-function rollFakeDamage(item, {spellLevel=null, versatile=false}={}) {
+function rollFakeDamage(item, {spellLevel=null, versatile=false}={}, damageType) {
   const itemData = item.data.data;
   const actorData = item.actor.data.data;
   if ( !item.hasDamage ) {
@@ -308,7 +320,9 @@ function rollFakeDamage(item, {spellLevel=null, versatile=false}={}) {
   if ( spellLevel ) rollData.item.level = spellLevel;
 
   // Define Roll parts
-  const parts = itemData.damage.parts.map(d => d[0]);
+  const parts = itemData.damage.parts.filter(function(arr){
+    if (arr.length >= 2 && arr[1] == damageType) return arr
+  }).map(d => d[0]);
   if ( versatile && itemData.damage.versatile ) parts[0] = itemData.damage.versatile;
   if ( (item.data.type === "spell") ) {
     if ( (itemData.scaling.mode === "cantrip") ) {
