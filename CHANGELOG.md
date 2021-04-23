@@ -4,6 +4,10 @@
 
 # 1.0.8
 
+* Avoid null reference if item is not on prototype actor's sheet
+
+# 1.0.8
+
 * Added support for "Tidy5e Sheet" NPCs (https://github.com/sdenec/tidy5e-sheet)
 
 # 1.0.7
