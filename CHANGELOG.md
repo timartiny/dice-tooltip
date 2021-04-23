@@ -1,3 +1,7 @@
+# 1.0.10
+
+* Avoid null reference if item is not on prototype actor's sheet
+
 # 1.0.9
 
 * Change references to `roll.parts` to use new `roll.terms`
