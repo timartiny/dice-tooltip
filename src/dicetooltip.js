@@ -196,8 +196,6 @@ function checkItemTooltip(el, actor) {
       console.log(tooltipStr)
     }
     tooltipStr += "</p>";
-
-    tooltipStr += "<p><b>• " + dmgOrHealing + ": </b>" + formatDiceParts(rollFakeDamage(item, itemConfig)) + " " + item.labels.damageTypes + "</p>";
   }
 
   if (item.hasSave) {
